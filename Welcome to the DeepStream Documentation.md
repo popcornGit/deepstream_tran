@@ -64,7 +64,37 @@ Gst-nvmsgconv将元数据转换为模式有效载荷，Gst-nvmsgbroker建立到�
 
 ## DeepStream reference app
 
+首先，开发人员可以使用提供的参考应用程序。还包括这些应用程序的源代码。端到端应用程序称为深度流应用程序。
+此应用程序是完全可配置的-它允许用户配置任何类型和数量的源。用户还可以选择要运行推理的网络类型。
+它预装了一个用于进行对象检测的推理插件，该插件由用于进行图像分类的推理插件级联而成。
+有一个配置跟踪器的选项。对于输出，用户可以在屏幕上渲染、保存输出文件或通过RTSP流式传输视频之间进行选择。
+![image](https://github.com/popcornGit/deepstream_tran/assets/48575896/f65d830b-b002-4e79-b62d-cb8d32e62b45)
 
+这是一个很好的参考应用程序，可以开始学习DeepStream的功能。
+该应用程序在DeepStream参考应用程序-DeepStream应用程序一章中有更详细的介绍。
+此应用程序的源代码位于/opt/nvidia/deepstream/deepstream-6.3/sources/apps/sample_apps/deepstream-app中。
+该应用程序适用于所有人工智能模型，并在个人自述文件中提供详细说明。性能基准测试也使用此应用程序运行。
 
 ## Getting started with building apps
+对于希望构建自定义应用程序的开发人员来说，深度流应用程序在开始开发时可能会有点势不可挡。
+SDK附带了几个简单的应用程序，开发人员可以在其中学习DeepStream的基本概念，构建一个简单的管道，然后继续构建更复杂的应用程序。
+![image](https://github.com/popcornGit/deepstream_tran/assets/48575896/b74fae76-fb21-4e3d-b85d-45ef0dc42ec0)
+
+开发人员可以从deepstream-test1开始，它几乎就像一个deepstream hello世界。
+在这个应用程序中，开发人员将学习如何使用各种DeepStream插件构建GStreamer管道。
+他们将从文件中获取视频，解码、批处理，然后进行对象检测，最后在屏幕上渲染方框。
+深度流测试2从测试1开始，并将辅助网络级联到主网络。深度流测试3展示了如何添加多个视频源，最后测试4将展示如何使用消息代理插件提供物联网服务。
+这4个入门应用程序既有原生C/C++，也有Python。
+要在DeepStream中阅读更多关于这些应用程序和其他示例应用程序的信息，请参阅C/C++示例应用程序源详细信息和Python示例应用程序和绑定源详细信息。
+
+DeepStream应用程序可以在不使用Graph Composer进行编码的情况下创建。有关详细信息，请参阅图形生成器简介。
+
 ## DeepStream in Python
+Python易于使用，在创建人工智能模型时被数据科学家和深度学习专家广泛采用。
+NVIDIA引入了Python绑定，帮助您使用Python构建高性能人工智能应用程序。DeepStream管道可以使用GStreamer框架的Python绑定GstPython构建。
+![image](https://github.com/popcornGit/deepstream_tran/assets/48575896/98c54498-8714-45e1-af80-9729500f819d)
+
+DeepStream Python应用程序使用Gst-Python API操作来构建管道，并使用探测函数来访问管道中各个点的数据。
+数据类型都是原生C，需要通过PyBindings或NumPy的填充层才能从Python应用程序访问它们。
+张量数据是经过推理后得出的原始张量输出。如果您试图检测对象，则需要通过解析和聚类算法对该张量数据进行后处理，以在检测到的对象周围创建边界框。
+要开始使用Python，请参阅本指南中的Python示例应用程序和绑定源详细信息以及DeepStreamPython API指南中的“DeepStreamPython”。
